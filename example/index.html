@@ -1,0 +1,180 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+	<title>T-Shirt List Example</title>
+
+	<!-- Bare minimun javascript include -->
+	<script src="../vendor/jquery/dist/jquery.min.js" type="application/javascript"></script>
+	<script src="../tshirt-list.js" type="application/javascript"></script>
+
+	<!-- Additional CSS include -->
+	<link rel="stylesheet" href="../vendor/lato/css/lato.min.css" />
+	<link rel="stylesheet" href="../tshirt-list.css" />
+
+	<link rel="shortcut icon" type="image/png" href="../tshirt.png">
+
+	<!-- Custom CSS -->
+	<style type="text/css">
+		html, body { width:100%; height:100% }
+
+		html,
+		body {
+			font: 16px/160%"Lato", sans-serif;
+			color: #333;
+			padding: 30px 0;
+		}
+		body {
+			width: 90%;
+			padding: 0;
+			margin: 0 auto;
+		}
+		h1 {
+			margin: 0;
+			padding: 12px 0;
+		}
+		p {
+			margin: 0;
+			padding: 8px 0;
+		}
+		pre {
+			background: #fafafa;
+			border: 1px solid #f5f5f5;
+			padding: 10px;
+		}
+		hr {
+			height: 32px;
+			border: none;
+			border-bottom: 1px solid whiteSmoke;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>T-shirt List</h1>
+	<p>T-shirt List is listing implementation. It read multi Array data and convert it into working listing complete with filtering and some more actions.</p>
+	<p>T-shirt List only required jQuery for basic fucntionality, but some feature required <a href="https://github.com/xinix-technology/tshirt-scroll">T-shirt Scroll</a>. If you use bower, do <strong>bower update</strong> for easy instalation.</p>
+	<hr />
+
+	<h2>Data</h2>
+	<p>We're using this data for example</p>
+	<h3>Config</h3>
+	<pre>
+["check", "find", "side", "value"]</pre>
+	<p>Config explanation:</p>
+	<ul>
+		<li><strong>check</strong>: The content will be displayed as check element, use eather 0 or 1 to choose between checked or unchecked.</li>
+		<li><strong>find</strong>: The filtering function will use this content as a filtering data.</li>
+		<li><strong>side</strong>: The content will be aligned to the right.</li>
+		<li><strong>value</strong>: The content will be put as a data-value attribute and will be hidden.</li>
+		<li><strong>input</strong>: The content will displayed as value of input element.</li>
+		<li><strong>callback (index, data)</strong>: Define a callback function in here, to further stylized with your own result.</li>
+	</ul>
+	<p>We put config as a class name, but on special spesific term, we display it differently. Only one config for each element, so it can't be mixed.</p>
+	<h3>Data:</h3>
+	<pre>
+[
+	[1, "Banana", 	"Yellow", 1],
+	[0, "Pineaple", "Yellow", 2],
+	[0, "Papaya", 	"Orange", 3],
+	[0, "Durian", 	"Yellow", 4],
+	[0, "Apple", 	"Yellow", 5],
+	...
+]</pre>
+	<hr />
+
+	<h2>Basic Listing</h2>
+	<p>A basic listing, with all predefined parameters except the config and data.</p>
+<pre>
+$("#list").list({
+	config: config,
+	data: data
+});</pre>
+	<p>Result:</p>
+	<div id="list"></div>
+	<hr />
+
+	<h2>Listing with Highlighted result</h2>
+	<p>Listing with the result highlighted. On very large data, this might resulting some slow down. The text will be inside strong tags.</p>
+<pre>
+$("#list").list({
+	config: config,
+	data: data,
+	highlight: true
+});</pre>
+	<p>Result:</p>
+	<div id="list2"></div>
+	<hr />
+
+	<h2>Listing with on click callback</h2>
+	<p>Listing with on click callback on the row.</p>
+<pre>
+$("#list").list({
+	config: config,
+	data: data,
+	onClick: function (element) {
+		// Do something
+	}
+});</pre>
+	<p>Result:</p>
+	<div id="list3"></div>
+	<hr />
+
+	<h2>Listing with multiple select</h2>
+	<p>Sometimes you need to do a multiple select on the listing.</p>
+<pre>
+$("#list").list({
+	config: config,
+	data: data,
+	multipleSelect: true
+});</pre>
+	<p>Result:</p>
+	<div id="list4"></div>
+
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+</body>
+
+<script type="text/javascript">
+	$(function () {
+		var config = ["check", "find", "side", "value"],
+			data = [
+				[1, "Banana", 	"Yellow", 1],
+				[0, "Pineaple", "Yellow", 2],
+				[0, "Papaya", 	"Orange", 3],
+				[0, "Durian", 	"Yellow", 4],
+				[0, "Apple", 	"Yellow", 5],
+				[0, "Cucumber", "Green",  6]
+			];
+
+		$("#list").list({
+			config: config,
+			data: data
+		});
+
+		$("#list2").list({
+			config: config,
+			data: data,
+			highlight: true
+		});
+
+		$("#list3").list({
+			config: config,
+			data: data,
+			onClick: function (element) {
+				alert ("You clicked " + $(element).find (".text").text ());
+			}
+		});
+
+		$("#list4").list({
+			config: config,
+			data: data,
+			multipleSelect: true
+		});
+	});
+</script>
+
+</html>

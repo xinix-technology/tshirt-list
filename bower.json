@@ -1,0 +1,32 @@
+{
+  "name": "tshirt-list",
+  "version": "0.0.1",
+  "homepage": "https://github.com/xinix-technology/tshirt-list",
+  "authors": [
+    "Dwan <me@dwaan.com>"
+  ],
+  "description": "A list implementation with search bar and checklist",
+  "main": "tshirt-list.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "jquery",
+    "tshirt",
+    "touch",
+    "scroll",
+    "table"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tshirt-scroll": "*"
+  }
+}

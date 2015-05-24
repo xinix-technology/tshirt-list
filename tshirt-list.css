@@ -1,0 +1,48 @@
+/*
+ * T-Shirt Popup
+ */
+.listview .color { background:url("color.png") top left no-repeat; background-size:100%; width:30px; height:30px; line-height:30px; display:inline-block }
+.listview .color.button-check { background-position:0 -30px }
+.listview .color.button-check.checked { background-position:0 0 }
+
+.listview { width:100%; padding:0; margin:0; list-style:none; margin:0; }
+.listview li {
+	line-height:150%; margin:0; display:block; position:relative; vertical-align:middle; border-width:0 0 1px 0;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box
+}
+.listview li .icon { width:30px; height:30px; float:left; margin-right:10px }
+.listview li img.picture { width:40px; height:40px; margin-right:0 }
+.listview li a { font-weight:300; padding:5px 10px; margin:0; color:black }
+.listview h5 { font-size:0.9em; margin:0 ; text-transform:uppercase;letter-spacing:0.5pt;padding:8px 20px;}
+.listview h5,
+.listview .filter { font-weight:300; padding:8px 16px; color:#50546C; margin:0 }
+.listview .input-filter { font-weight:300; font-size:1.2em; padding:0 20px; color:#50546C; margin:0; line-height:44px; height:44px; width:100% }
+.listview .filter { b
+	ackground:#EFF1F8; padding:10px 20px 8px; border:0; width:100%; outline:0; font-size:1.2em; color:#666666; line-height:30px; margin:0; margin-bottom:1px;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+}
+.listview .hide { display:none }
+.listview .info { text-align:center; padding:8px 0 }
+
+.list-group { background:transparent; padding:0; list-style:none; margin:0 }
+.list-group li { padding:0; position:relative; display:inline-block; width:100%; margin:0 0 1px 0; font-size:1.2em; line-height:30px }
+.list-group li.plain { padding:8px 20px }
+.list-group li:nth-child(even) { background:whiteSmoke }
+.list-group li select,
+.list-group li input { display:inline-block; text-align:right; width:auto; min-width:250px; line-height:30px; font-weight:300; height:30px }
+.list-group li input.left { text-align:left }
+.list-group li select { pointer-events:none; direction:rtl }
+.list-group li i { vertical-align:top }
+.list-group li span { line-height:inherit; display:inline-block; float:left; width:auto; vertical-align:top;}
+.list-group li span.right { float:right; font-weight:100 }
+.list-group li span i { margin-right:10px }
+.list-group li span b,
+.list-group li span strong { color:#007DFF; font-weight:500 }
+.list-group li .side i { margin-right:0; cursor:pointer; display:inline-block }
+.list-group li .side { float:right; color:#50536C; font-weight:300; white-space:nowrap }
