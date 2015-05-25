@@ -17,7 +17,7 @@
 				cantfind: "Can't find the string you're looking",
 				empty: "Can't find any data right now",
 				multipleSelect: false,
-				highlight: false,
+				highlight: true,
 				onClick: function (element) {},
 			},
 			that = this,
