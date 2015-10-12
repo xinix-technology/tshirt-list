@@ -1,8 +1,8 @@
 ;(function ($, window, document) {
-	"use strict";
+	'use strict';
 
 	// Case Insensitive contains pseudo selector
-	$.expr[":"].contains = $.expr.createPseudo(function(arg) {
+	$.expr[':'].contains = $.expr.createPseudo(function(arg) {
 		return function( elem ) {
 			return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0;
 		};
@@ -13,12 +13,12 @@
 		var defaults = {
 				config: [],
 				data: [],
-				placeholder: "Type to find",
-				cantfind: "Can't find the string you're looking",
-				empty: "Can't find any data right now",
+				placeholder: 'Type to find',
+				cantfind: 'Can\'t find the string you\'re looking',
+				empty: 'Can\'t find any data right now',
 				multipleSelect: false,
 				highlight: true,
-				onClick: function (element) {},
+				onClick: function () {}
 			},
 			that = this,
 			settings = $.extend({}, defaults, options);
@@ -26,23 +26,21 @@
 		that.each(function () {
 			var elem = $(this);
 
-			elem.addClass ("listview");
+			elem.addClass ('listview');
 
 			// Draw the list
 			elem.draw = function () {
-				var html = "",
-					htmlContent = "",
+				var html = '',
+					htmlContent = '',
 					selected = false;
 
-				html += '\
-					<input class="input-filter" type="text" placeholder="' + settings.placeholder + '">\
-					<ul class="list-group">\
-				';
+				html += '<input class="input-filter" type="text" placeholder="' + settings.placeholder + '">';
+				html += '<ul class="list-group">';
 
 				for (var groupLoop = 0; groupLoop < settings.data.length; groupLoop++) {
-					htmlContent = "";
+					htmlContent = '';
 					for (var groupDataLoop = 0; groupDataLoop < settings.config.length; groupDataLoop++) {
-						if (typeof settings.config[groupDataLoop] === "function") {
+						if (typeof settings.config[groupDataLoop] === 'function') {
 							htmlContent += settings.config[groupDataLoop] (groupDataLoop, settings.data[groupLoop][groupDataLoop]);
 						} else {
 							switch (settings.config[groupDataLoop]) {
@@ -63,10 +61,10 @@
 								break;
 								default:
 									htmlContent += '<span data-index="' + groupDataLoop + '" class="' + settings.config[groupDataLoop] + '">' + settings.data[groupLoop][groupDataLoop] + '</span>';
-								break
+								break;
 							}
 						}
-					};
+					}
 
 					if (selected)
 						html += '<li class="plain selected" data-index="' + groupLoop + '">';
@@ -74,12 +72,10 @@
 						html += '<li class="plain" data-index="' + groupLoop + '">';
 					html += htmlContent;
 					html += '</li>';
-				};
+				}
 
-				html +=  '\
-					</ul>\
-					<div class="info hide">' + settings.cantfind + '</div>\
-				';
+				html +=  '</ul>';
+				html +=  '<div class="info hide">' + settings.cantfind + '</div>';
 
 				if (settings.data.length === 0)
 				html +=  '<div class="info">' + settings.empty + '</div>';
@@ -96,20 +92,20 @@
 
 				if (settings.multipleSelect) {
 					elem.find ('li').click (function (target) {
-						if (target.currentTarget === target.target || $(target.target).hasClass ("text") || $(target.target).hasClass ("button-check")) {
-							$(this).toggleClass ("selected");
-							$(this).find (".button-check").toggleClass ("checked");
+						if (target.currentTarget === target.target || $(target.target).hasClass ('text') || $(target.target).hasClass ('button-check')) {
+							$(this).toggleClass ('selected');
+							$(this).find ('.button-check').toggleClass ('checked');
 
 							settings.onClick ($(this));
 						}
 					});
 				} else {
 					elem.find ('li').click (function (target) {
-						if (target.currentTarget === target.target || $(target.target).hasClass ("text") || $(target.target).hasClass ("button-check")) {
-							$(this).siblings ().removeClass ("selected");
-							$(this).addClass ("selected");
-							$(this).siblings ().find (".button-check").removeClass ("checked");
-							$(this).find (".button-check").addClass ("checked");
+						if (target.currentTarget === target.target || $(target.target).hasClass ('text') || $(target.target).hasClass ('button-check')) {
+							$(this).siblings ().removeClass ('selected');
+							$(this).addClass ('selected');
+							$(this).siblings ().find ('.button-check').removeClass ('checked');
+							$(this).find ('.button-check').addClass ('checked');
 
 							settings.onClick ($(this));
 						}
@@ -119,10 +115,10 @@
 
 			// Filtering the list
 			elem.filter = function (target) {
-				var filterText = "",
+				var filterText = '',
 					filterElement = elem.find('li .find:contains("' + target.val () + '")');
 
-				if (target.val () !== "") {
+				if (target.val () !== '') {
 					elem.find('li').addClass ('hide');
 					elem.find('.info').addClass ('hide');
 
@@ -143,7 +139,7 @@
 				} else {
 					// Unhighlight the filter result
 					if (settings.highlight) {
-						elem.find("li .find").each (function () {
+						elem.find('li .find').each (function () {
 							$(this).text ($(this).text());
 						});
 					}
@@ -155,5 +151,5 @@
 
 			elem.draw ();
 		});
-	}
+	};
 }(jQuery, window, document));
